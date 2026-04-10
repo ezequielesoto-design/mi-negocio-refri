@@ -1,0 +1,49 @@
+<div class="disclaimer-box">
+    <p><strong>⚠️ Nota técnica importante:</strong></p>
+    <p>
+        Los valores proporcionados por esta calculadora son estimaciones teóricas basadas en rendimientos estándar de catálogos 
+        <strong>Embraco</strong> y <strong>Tecumseh</strong>. La carga térmica real puede variar según la antigüedad del equipo, 
+        el estado de los burletes, la carga de gas y la ubicación de la unidad condensadora.
+    </p>
+    <hr>
+    <p>Para un cálculo preciso y evitar daños en el compresor, es fundamental una inspección en el lugar.</p>
+    
+    <div style="text-align: center;">
+        <a href="https://wa.me/tu-numero-aqui?text=Hola!%20Usé%20la%20calculadora%20y%20quiero%20coordinar%20una%20visita%20técnica" class="visit-button">
+            📅 Coordinar Visita Técnica de Confirmación
+        </a>
+    </div>
+</div>
+
+<style>
+    .disclaimer-box {
+        background: #fff3cd; /* Color amarillo de advertencia suave */
+        border: 1px solid #ffeeba;
+        color: #856404;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 8px;
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+    .disclaimer-box hr {
+        border: 0;
+        border-top: 1px solid #ffeeba;
+        margin: 15px 0;
+    }
+    .visit-button {
+        background: #0056b3;
+        color: white;
+        padding: 12px 25px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 10px;
+        transition: background 0.3s;
+    }
+    .visit-button:hover {
+        background: #003d80;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+</style>
