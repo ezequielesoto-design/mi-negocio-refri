@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicio Técnico de Refrigeración | Expertos en Frío</title>
+    <style>
+        /* Estilos Generales */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; color: #333; line-height: 1.6; }
+        header { background: #0056b3; color: white; padding: 60px 20px; text-align: center; }
+        
+        /* Contenedor */
+        .container { max-width: 1000px; margin: auto; padding: 20px; }
+
+        /* Servicios */
+        .services { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px; }
+        .card { background: #f9f9f9; border-top: 5px solid #00aaff; padding: 20px; width: 280px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
+        .card h3 { color: #0056b3; }
+
+        /* Botón de Acción */
+        .cta-button { background: #28a745; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; margin-top: 20px; }
+        .cta-button:hover { background: #218838; }
+
+        /* Formulario */
+        form { background: #eef2f7; padding: 30px; border-radius: 10px; margin-top: 40px; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        
+        footer { text-align: center; padding: 40px; background: #333; color: white; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Expertos en Refrigeración</h1>
+        <p>Soluciones rápidas para tu hogar o comercio.</p>
+        <a href="https://wa.me/tu-numero-aqui" class="cta-button">Solicitar Service por WhatsApp</a>
+    </header>
+
+    <div class="container">
+        <h2 style="text-align:center;">Nuestros Servicios</h2>
+        <div class="services">
+            <div class="card">
+                <h3>Aire Acondicionado</h3>
+                <p>Instalación, carga de gas y mantenimiento preventivo/correctivo.</p>
+            </div>
+            <div class="card">
+                <h3>Heladeras Familiares</h3>
+                <p>Reparación de todas las marcas. Cambio de burletes y motores.</p>
+            </div>
+            <div class="card">
+                <h3>Línea Comercial</h3>
+                <p>Mantenimiento de cámaras frigoríficas, bateas y exhibidoras.</p>
+            </div>
+        </div>
+
+        <h2 style="text-align:center; margin-top: 60px;">Pedir un presupuesto</h2>
+        <form id="contactForm">
+            <label>Nombre:</label>
+            <input type="text" id="nombre" placeholder="Tu nombre" required>
+            
+            <label>Tipo de Equipo:</label>
+            <input type="text" id="equipo" placeholder="Ej: Aire Split 3000 frigorías" required>
+            
+            <label>Mensaje:</label>
+            <textarea id="mensaje" rows="4" placeholder="Cuéntanos el problema..."></textarea>
+            
+            <button type="button" onclick="enviarFormulario()" class="cta-button" style="border:none; width:100%; cursor:pointer;">Enviar Solicitud</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Tu Empresa de Refrigeración - Calidad y Confianza</p>
+    </footer>
+
+    <script>
+        function enviarFormulario() {
+            const nombre = document.getElementById('nombre').value;
+            const equipo = document.getElementById('equipo').value;
+            
+            if(nombre && equipo) {
+                alert("¡Gracias " + nombre + "! Hemos recibido tu solicitud para el equipo: " + equipo + ". Te contactaremos pronto.");
+                document.getElementById('contactForm').reset();
+            } else {
+                alert("Por favor, completa los campos principales.");
+            }
+        }
+    </script>
+
+</body>
+</html>
