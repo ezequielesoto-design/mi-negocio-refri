@@ -1,0 +1,83 @@
+<section class="calculator-section">
+    <h2 style="text-align:center;">Calculadora de Potencia Necesaria</h2>
+    <p style="text-align:center;">Estima la capacidad que requiere tu próximo equipo.</p>
+    
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('aire')">Aire Acondicionado</button>
+        <button class="tab-btn" onclick="openTab('comercial')">Heladeras Comerciales</button>
+    </div>
+
+    <div id="aire" class="tab-content active">
+        <h3>Cálculo para Ambientes</h3>
+        <label>Largo (metros):</label>
+        <input type="number" id="largo" placeholder="Ej: 4" oninput="calcularAire()">
+        <label>Ancho (metros):</label>
+        <input type="number" id="ancho" placeholder="Ej: 3" oninput="calcularAire()">
+        <label>Alto (metros):</label>
+        <input type="number" id="alto" placeholder="Ej: 2.5" oninput="calcularAire()">
+        
+        <div class="result" id="resAire">
+            Potencia estimada: <strong>0 Watts</strong> (0 Frigorías)
+        </div>
+        <p><small>*Cálculo base para ambientes estándar. Factores como ventanas o sol directo pueden variar el resultado.</small></p>
+    </div>
+
+    <div id="comercial" class="tab-content">
+        <h3>Cálculo por Tipo de Producto</h3>
+        <label>¿Qué vas a refrigerar?</label>
+        <select id="producto" onchange="calcularRefri()">
+            <option value="0">Selecciona una opción...</option>
+            <option value="250">Pastelería/Tortas (2°C a 5°C)</option>
+            <option value="350">Fiambres y Lácteos (0°C a 3°C)</option>
+            <option value="600">Congelados/Carnes (-18°C)</option>
+        </select>
+        <label>Metros lineales del mostrador/exhibidora:</label>
+        <input type="number" id="metros" placeholder="Ej: 2" oninput="calcularRefri()">
+
+        <div class="result" id="resRefri">
+            Potencia sugerida: <strong>0 Watts</strong>
+        </div>
+    </div>
+</section>
+
+<style>
+    .calculator-section { background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 40px; }
+    .tabs { display: flex; justify-content: center; margin-bottom: 20px; }
+    .tab-btn { padding: 10px 20px; border: none; background: #ddd; cursor: pointer; font-weight: bold; }
+    .tab-btn.active { background: #0056b3; color: white; }
+    
+    .tab-content { display: none; padding: 20px; border: 1px solid #eee; border-radius: 5px; }
+    .tab-content.active { display: block; }
+    
+    .result { margin-top: 20px; padding: 15px; background: #e7f3ff; border-left: 5px solid #0056b3; font-size: 1.1em; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+</style>
+
+<script>
+    function openTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+
+    function calcularAire() {
+        const l = document.getElementById('largo').value || 0;
+        const a = document.getElementById('ancho').value || 0;
+        const h = document.getElementById('alto').value || 0;
+        
+        // Fórmula: Volumen * 50 Watts (aproximado)
+        const watts = l * a * h * 50;
+        const frigorias = watts * 0.86; // Conversión estándar
+        
+        document.getElementById('resAire').innerHTML = `Potencia estimada: <strong>${watts.toFixed(0)} Watts</strong> (${frigorias.toFixed(0)} Frigorías)`;
+    }
+
+    function calcularRefri() {
+        const factor = document.getElementById('producto').value;
+        const m = document.getElementById('metros').value || 0;
+        
+        const totalWatts = factor * m;
+        document.getElementById('resRefri').innerHTML = `Potencia sugerida: <strong>${totalWatts.toFixed(0)} Watts</strong>`;
+    }
+</script>
