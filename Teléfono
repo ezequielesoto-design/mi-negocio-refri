@@ -1,0 +1,37 @@
+<script>
+    // Tu número de contacto configurado
+    const MI_TELEFONO = "5491135759048"; // Formato internacional para Argentina 011 15...
+
+    // Función para actualizar todos los enlaces de WhatsApp en la página
+    function configurarEnlacesWhatsApp() {
+        const enlaces = document.querySelectorAll('a[href*="wa.me"]');
+        enlaces.forEach(enlace => {
+            // Mantenemos el texto personalizado si ya existe, solo cambiamos el número
+            const urlActual = new URL(enlace.href);
+            const mensaje = urlActual.searchParams.get('text') || "Hola, deseo consultar por un servicio técnico.";
+            enlace.href = `https://wa.me/${MI_TELEFONO}?text=${encodeURIComponent(mensaje)}`;
+        });
+    }
+
+    // Validación del formulario de contacto
+    function enviarFormulario() {
+        const nombre = document.getElementById('nombre').value.trim();
+        const equipo = document.getElementById('equipo').value.trim();
+        const mensaje = document.getElementById('mensaje').value.trim();
+
+        if (nombre === "" || equipo === "") {
+            alert("⚠️ Por favor, completa tu nombre y el equipo a reparar para poder asesorarte mejor.");
+            return;
+        }
+
+        // Creamos el mensaje para WhatsApp
+        const textoWhatsApp = `Hola, mi nombre es ${nombre}. Necesito un service para: ${equipo}. Detalle: ${mensaje}`;
+        
+        // Redirigir a WhatsApp con los datos del formulario
+        const urlFinal = `https://wa.me/${MI_TELEFONO}?text=${encodeURIComponent(textoWhatsApp)}`;
+        window.open(urlFinal, '_blank');
+    }
+
+    // Ejecutar configuración al cargar la página
+    window.onload = configurarEnlacesWhatsApp;
+</script>
